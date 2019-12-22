@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue Basic App</title>
+    <!-- development version, includes helpful console warnings -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Products List:</h1>
+      <!-- <h2>{{product}} are in stock.</h2> -->
+      <ul>
+        <!-- <li v-for="product in products">{{product}}</li> -->
+        <li v-for="product in products">
+          <input type="number" v-model.number="product.quantity" /> {{ product.name }}
+          <span v-if="product.quantity <= 0">
+            - OUT OF STOCK
+          </span>
+          <button @click="product.quantity++">
+            Add
+          </button>
+          <button @click="product.quantity--">
+            Subtract
+          </button>
+        </li>
+      </ul>
+      <h2>Total Inventory: {{totalProducts}}</h2>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
